@@ -70,7 +70,7 @@ metadata {
 	  }
 
       main (["contact"])
-      details(["contact","battery","configure","refresh","icon","lastopened"])
+      details(["contact","battery","icon","lastopened"])
    }
 }
 
