@@ -73,7 +73,7 @@ metadata {
 		}
         
 		main (["switch"])
-		details(["switch", "battery", "refresh", "configure"])
+		details(["switch", "battery"])
 	}
 }
 
