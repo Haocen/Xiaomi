@@ -22,6 +22,7 @@ metadata {
         capability "Refresh"
         capability "Switch"
         capability "Temperature Measurement"
+	capability "Health Check"
         
         attribute "lastCheckin", "string"
     }
@@ -68,6 +69,16 @@ metadata {
         main (["switch", "temperature"])
         details(["switch", "temperature", "refresh"])
     }
+}
+
+def installed() {
+// Device wakes up every 1 hour, this interval allows us to miss one wakeup notification before marking offline
+	sendEvent(name: "checkInterval", value: 2 * 60 * 60 + 2 * 60, displayed: false, data: [protocol: "zigbee", hubHardwareId: device.hub.hardwareID])
+}
+
+def updated() {
+// Device wakes up every 1 hours, this interval allows us to miss one wakeup notification before marking offline
+	sendEvent(name: "checkInterval", value: 2 * 60 * 60 + 2 * 60, displayed: false, data: [protocol: "zwave", hubHardwareId: device.hub.hardwareID])
 }
 
 // Parse incoming device messages to generate events
