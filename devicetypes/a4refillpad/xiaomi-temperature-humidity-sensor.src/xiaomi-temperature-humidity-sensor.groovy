@@ -50,9 +50,9 @@ metadata {
 	}
     
 	preferences {
-		section {
-			input title: "Temperature Offset", description: "This feature allows you to correct any temperature variations by selecting an offset. Ex: If your sensor consistently reports a temp that's 5 degrees too warm, you'd enter '-5'. If 3 degrees too cold, enter '+3'. Please note, any changes will take effect only on the NEXT temperature change.", displayDuringSetup: false, type: "paragraph", element: "paragraph"
-			input "tempOffset", "number", title: "Degrees", description: "Adjust temperature by this many degrees", range: "*..*", displayDuringSetup: false
+		section("Temperature Offset") {
+            input title: "Temperature Offset", description: "This feature allows you to correct any temperature variations by selecting an offset. Ex: If your sensor consistently reports a temp that's 5 degrees too warm, you'd enter '-5'. If 3 degrees too cold, enter '+3'. Please note, any changes will take effect only on the NEXT temperature change.", displayDuringSetup: false, type: "paragraph", element: "paragraph"
+            input "tempOffset", "number", title: "Degrees", description: "Adjust temperature by this many degrees", range: "*..*", displayDuringSetup: false
 		}
     }
     
@@ -78,12 +78,20 @@ metadata {
 				]
 			)
             }
-            tileAttribute("device.lastCheckin", key: "SECONDARY_CONTROL") {
-    			attributeState("default", label:'Last Update: ${currentValue}', icon: "st.Health & Wellness.health9")
-			}
+            tileAttribute("device.humidity", key: "SECONDARY_CONTROL") {
+                attributeState("humidity", label:'${currentValue}%', unit:"%", defaultState: true, icon:"st.Weather.weather12")
+            }
 		}
 		standardTile("humidity", "device.humidity", inactiveLabel: false, decoration: "flat", width: 2, height: 2) {
 			state "default", label:'${currentValue}%', icon:"st.Weather.weather12"
+		}
+        
+        standardTile("icon", "device.lastCheckin", inactiveLabel: false, decoration: "flat", width: 2, height: 1) {
+            state "default", label:'Last Updated:'
+      	}
+        
+        valueTile("lastcheckin", "device.lastCheckin", inactiveLabel: false, decoration: "flat", width: 4, height: 1) {
+			state "default", label:'${currentValue}'
 		}
         
         valueTile("battery", "device.battery", decoration: "flat", inactiveLabel: false, width: 2, height: 2) {
@@ -112,9 +120,9 @@ metadata {
 		standardTile("refresh", "device.refresh", inactiveLabel: false, decoration: "flat", width: 2, height: 2) {
 			state "default", action:"refresh.refresh", icon:"st.secondary.refresh"
         }
-            
-		main(["temperature2"])
-		details(["temperature", "battery", "humidity"])
+        
+        main(["temperature2"])
+        details(["temperature", "battery", "icon", "lastcheckin"])
 	}
 }
 
