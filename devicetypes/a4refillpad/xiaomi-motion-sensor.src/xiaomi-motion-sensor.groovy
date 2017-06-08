@@ -81,7 +81,7 @@ metadata {
         }
 
 		main(["motion"])
-		details(["motion", "battery", "configure", "refresh","icon", "lastmotion", "reset" ])
+		details(["motion", "battery", "icon", "lastmotion", "reset" ])
 	}
 }
 
