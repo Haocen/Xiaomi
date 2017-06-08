@@ -66,8 +66,8 @@ metadata {
         standardTile("refresh", "device.refresh", inactiveLabel: false, decoration: "flat", width: 2, height: 2) {
             state "default", label:"", action:"refresh.refresh", icon:"st.secondary.refresh"
         }
-        main (["switch", "temperature"])
-        details(["switch", "temperature", "refresh"])
+        main (["switch"])
+        details(["switch"])
     }
 }
 
