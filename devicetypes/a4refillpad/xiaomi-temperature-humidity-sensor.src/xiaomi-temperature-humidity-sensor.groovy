@@ -114,7 +114,7 @@ metadata {
         }
             
 		main(["temperature2"])
-		details(["temperature", "battery", "humidity","refresh"])
+		details(["temperature", "battery", "humidity"])
 	}
 }
 
