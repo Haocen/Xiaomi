@@ -212,6 +212,13 @@ def refresh() {
 }
 */
 
+/**
+ * PING is used by Device-Watch in attempt to reach the Device
+ * */
+def ping() {
+	return false
+}
+
 def refresh() {
 	log.debug "refreshing"
     [
