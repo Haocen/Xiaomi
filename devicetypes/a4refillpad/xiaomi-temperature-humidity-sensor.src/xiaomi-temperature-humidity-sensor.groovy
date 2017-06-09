@@ -267,6 +267,13 @@ def enrollResponse() {
 	]
 }
 
+/**
+ * PING is used by Device-Watch in attempt to reach the Device
+ * */
+def ping() {
+	return false
+}
+
 private String swapEndianHex(String hex) {
 	reverseArray(hex.decodeHex()).encodeHex()
 }
