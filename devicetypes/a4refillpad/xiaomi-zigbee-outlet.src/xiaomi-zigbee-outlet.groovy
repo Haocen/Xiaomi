@@ -162,6 +162,13 @@ def on() {
 	"st cmd 0x${device.deviceNetworkId} 1 6 1 {}"
 }
 
+/**
+ * PING is used by Device-Watch in attempt to reach the Device
+ * */
+def ping() {
+	return false
+}
+
 def refresh() {
 	log.debug "refreshing"
     [
