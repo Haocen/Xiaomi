@@ -104,6 +104,13 @@ def parse(String description) {
   return results;
 }
 
+/**
+ * PING is used by Device-Watch in attempt to reach the Device
+ * */
+def ping() {
+	return false
+}
+
 def configure(){
     [
     "zdo bind 0x${device.deviceNetworkId} 1 2 0 {${device.zigbeeId}} {}", "delay 5000",
